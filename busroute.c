@@ -131,3 +131,67 @@ void read_line(char *buf, int len) {
     size_t l = strlen(buf);
     if (l && buf[l-1] == '\n') buf[l-1] = '\0';
 }
+
+int main(void) {
+    Stop *route = NULL;
+    char choice[10];
+    char name[NAME_LEN];
+    int pos;
+
+    puts("Simple Bus Route Manager (Singly Linked List)");
+
+    while (1) {
+        puts("\nMenu:\n1. Add stop at end\n2. Insert stop at position\n3. Remove stop by name\n4. Remove stop at position\n5. Display route\n6. Count stops\n7. Traverse route (simulate)\n8. Clear route\n9. Exit");
+        printf("Choose an option (1-9): ");
+        read_line(choice, sizeof(choice));
+
+        switch (atoi(choice)) {
+            case 1:
+                printf("Enter stop name: ");
+                read_line(name, sizeof(name));
+                add_stop_end(&route, name);
+                puts("Stop added at end.");
+                break;
+            case 2:
+                printf("Enter stop name: ");
+                read_line(name, sizeof(name));
+                printf("Enter 1-based position to insert at: ");
+                scanf("%d%*c", &pos); // consume newline
+                add_stop_at(&route, name, pos);
+                puts("Stop inserted.");
+                break;
+            case 3:
+                printf("Enter exact stop name to remove: ");
+                read_line(name, sizeof(name));
+                if (remove_stop_by_name(&route, name)) puts("Stop removed.");
+                else puts("Stop not found.");
+                break;
+            case 4:
+                printf("Enter 1-based position to remove: ");
+                scanf("%d%*c", &pos);
+                if (remove_stop_at(&route, pos)) puts("Stop removed.");
+                else puts("Invalid position.");
+                break;
+            case 5:
+                display_route(route);
+                break;
+            case 6:
+                printf("Total stops: %d\n", count_stops(route));
+                break;
+            case 7:
+                traverse_route(route);
+                break;
+            case 8:
+                free_route(&route);
+                puts("Route cleared.");
+                break;
+            case 9:
+                free_route(&route);
+                puts("Goodbye!");
+                return 0;
+            default:
+                puts("Invalid choice. Enter a number 1-9.");
+        }
+    }
+    return 0;
+}
