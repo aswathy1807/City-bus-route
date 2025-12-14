@@ -1,8 +1,5 @@
 # Single Linked List Bus Route Implementation
 
-## Overview
-Implement a singly linked list to represent a city bus route, where each node corresponds to a bus stop in the order the bus visits them. The list should support operations such as adding new stops to the route, removing stops, and traversing the stops sequentially as the bus moves along its route.
-
 ## Problem Statement
 A city bus travels along a fixed route, visiting multiple stops in a specific order. We need to model this route using a singly linked list where:
 - Each node represents a bus stop
@@ -14,14 +11,14 @@ A city bus travels along a fixed route, visiting multiple stops in a specific or
 ### Node Structure
 ```c
 struct Stop {
-    int stopID;           // Unique identifier for the bus stop
-    char stopName[100];   // Name of the bus stop
-    struct Stop* next;    // Pointer to the next stop
+    int stopID;           
+    char stopName[100];   
+    struct Stop* next;    
 };
 ```
 
 ### List Structure
-The bus route is represented as a series of linked nodes, starting from a `head` pointer that points to the first stop.
+The bus route is represented as a series of linked nodes, starting from a head pointer that points to the first stop.
 
 ## Required Operations
 
@@ -113,3 +110,8 @@ Traverse:
 ## OUTPUT OF THE CODE (reference)
 
 ![refernce image](/screenshots/output.png)
+
+
+## HOW TO RUN 
+
+![refernce image](/screenshots/howtorun.png)
