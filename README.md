@@ -61,7 +61,7 @@ The bus route is represented as a series of linked nodes, starting from a head p
 - Deallocate all memory used by the linked list
 - Set head pointer to NULL
 
-## Example Usage
+## Example
 
 ```
 Initial Route:
